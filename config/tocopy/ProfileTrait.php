@@ -44,7 +44,7 @@ trait ProfileTrait
             // Get access to the apprprioate table
             $cats = TableRegistry::getTableLocator()->get('Categories');
             // Select based on currently logged in person
-            $categories = $cats->find('all')->contain(['Topics']);
+            $categories = $cats->find('all');
 
             $appContain = (array)Configure::read('Auth.authenticate.' . AuthComponent::ALL . '.contain');
             $socialContain = Configure::read('Users.Social.login') ? ['SocialAccounts'] : [];
@@ -54,9 +54,6 @@ trait ProfileTrait
                         'PathwaysUsers.Pathways',
                         'ActivitiesUsers' => ['sort' => ['ActivitiesUsers.created' => 'desc']],
                         'ActivitiesUsers.Activities',
-                        'ActivitiesUsers.Activities.ActivityTypes',
-                        'ActivitiesUsers.Activities.Steps',
-                        'ActivitiesUsers.Activities.Steps.Pathways',
                         'Ministries',
                         'Reports' => ['sort' => ['Reports.created' => 'desc']],
                         'Reports.Activities']),

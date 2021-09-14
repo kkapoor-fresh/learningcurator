@@ -57,7 +57,7 @@ return [
         'webroot' => 'webroot',
         'wwwRoot' => WWW_ROOT,
         //'baseUrl' => env('SCRIPT_NAME'),
-        'fullBaseUrl' => false,
+        'fullBaseUrl' => 'https://learningcurator.apps.silver.devops.gov.bc.ca',
         'imageBaseUrl' => 'img/',
         'cssBaseUrl' => 'css/',
         'jsBaseUrl' => 'js/',

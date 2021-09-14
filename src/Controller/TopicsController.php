@@ -83,12 +83,11 @@ class TopicsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $topic = $this->Topics->patchEntity($topic, $this->request->getData());
             if ($this->Topics->save($topic)) {
+                $this->Flash->success(__('The topic has been saved.'));
 
-                $redirect = '/topics/view/' . $topic->id;
-                return $this->redirect($redirect);
-                
+                return $this->redirect(['action' => 'index']);
             }
-            echo __('The topic could not be saved. Please, try again.');
+            $this->Flash->error(__('The topic could not be saved. Please, try again.'));
         }
         $users = $this->Topics->Users->find('list', ['limit' => 200]);
         $categories = $this->Topics->Categories->find('list', ['limit' => 200]);
